@@ -1,17 +1,15 @@
 import React from "react";
-import { Box, Image, Badge, Stack, Text, Icon, Divider } from "@chakra-ui/react";
-import { BsWhatsapp, BsMailbox, BsPhone, BsChevronRight,BsX } from "react-icons/bs";
-const Card = ({title,image,hours}) => {
-  const property = {
-    imageUrl: "https://cdn.vuetifyjs.com/images/john.jpg",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Python programming",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
-  };
+import {
+  Box,
+  Image,
+  Stack,
+  Text,
+  Icon,
+  Divider,
+  Tooltip,
+} from "@chakra-ui/react";
+import { BsChevronRight, BsX } from "react-icons/bs";
+const Card = ({ title, image, hours }) => {
   return (
     <Box
       display="inline-block"
@@ -22,20 +20,12 @@ const Card = ({title,image,hours}) => {
       overflow="hidden"
     >
       <Stack direction="column" py="1" align="stretch" justify="stretch">
-      <Box
-          display="inline-block"
-          ml="3"
-          align="space-between"
-        >
-        <Stack
-          direction="row"
-          justify="flex-end"
-        >
-          <Box display="flex">
-          <Icon color="red.300" as={BsX} w={6} h={6} />
-          </Box>
-        </Stack>   
-         
+        <Box display="inline-block" ml="3" align="space-between">
+          <Stack direction="row" justify="flex-end">
+            <Box display="flex">
+              <Icon color="red.300" as={BsX} w={6} h={6} />
+            </Box>
+          </Stack>
         </Box>
         <Stack
           direction="column"
@@ -48,7 +38,7 @@ const Card = ({title,image,hours}) => {
               borderRadius="full"
               boxSize="50px"
               src={image}
-              alt={'Course Picture'}
+              alt={"Course Picture"}
             />
           </Box>
           <Box display="inline-block">
@@ -74,26 +64,24 @@ const Card = ({title,image,hours}) => {
             </Text>
           </Box>
         </Stack>
-        <Divider/>
-        <Box
-          display="inline-block"
-          color="primary.900"
-          ml="3"
-          align="space-between"
-        >
-        <Stack
-          direction="row"
-          justify="space-between"
-        >
-          <Box display="flex" mr="3">
-          <Text>Learn More</Text>
+        <Divider />
+        <Tooltip label="Coming soon!!" aria-label="A tooltip">
+          <Box
+            display="inline-block"
+            color="primary.900"
+            ml="3"
+            align="space-between"
+          >
+            <Stack direction="row" justify="space-between">
+              <Box display="flex" mr="3">
+                <Text>Learn More</Text>
+              </Box>
+              <Box display="flex">
+                <Icon as={BsChevronRight} w={6} h={6} />
+              </Box>
+            </Stack>
           </Box>
-          <Box  display="flex">
-          <Icon  as={BsChevronRight} w={6} h={6} />
-          </Box>
-        </Stack>   
-         
-        </Box>
+        </Tooltip>
       </Stack>
     </Box>
   );
