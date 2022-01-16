@@ -36,8 +36,8 @@ const Card = () => {
         <Box display="flex"  alignItems="center">
           <Stack direction="column" py="1" justify="center">
             <Box display="inline-block"  align="center" justify="center">
-              <Badge borderRadius="full" px="2" my="1" colorScheme="teal">
-                <Text fontWeight="light"> {"NM-120222"} </Text>
+              <Badge borderRadius="full" px="2" my="1" colorScheme="primary">
+                <Text fontWeight="light" color="white"> {"NM-120222"} </Text>
               </Badge>
             </Box>
             <Box display="inline-block">
@@ -49,7 +49,7 @@ const Card = () => {
               />
             </Box>
             <Box display="inline-block">
-              <Text fontWeight="bold" fontSize="md"> {"Tony Stark"} </Text>
+              <Text fontWeight="bold" fontSize="md" color="primary"> {"Tony Stark"} </Text>
             </Box>
             <Box display="inline-block" ml="3">
               <Stack direction="row" py="1" justify="center">
@@ -57,10 +57,10 @@ const Card = () => {
                   <Icon color="green.300" as={BsWhatsapp} w={6} h={6} />
                 </Box>
                 <Box display="inline-block">
-                  <Icon color="gray.500" as={BsMailbox} w={6} h={6} />
+                  <Icon color="primary" as={BsMailbox} w={6} h={6} />
                 </Box>
                 <Box display="inline-block" ml="3">
-                  <Icon color="gray.500" as={BsPhone} w={6} h={6} />
+                  <Icon color="primary" as={BsPhone} w={6} h={6} />
                 </Box>
               </Stack>
             </Box>
@@ -76,7 +76,7 @@ const Card = () => {
               </Text></Box>
               <Box display="inline-block">
               <Text
-                color="gray.500"
+                color="primary"
                 letterSpacing="wide"
                 fontSize="xs"
                 textAlign="left"
@@ -95,7 +95,7 @@ const Card = () => {
           </Stack>
 
           {/* <Box display="inline-block"  ml="3">
-              <Icon  color='gray.500' as={AiOutlineArrowRight} w={6} h={6} />
+              <Icon  color='primary' as={AiOutlineArrowRight} w={6} h={6} />
             </Box> */}
 
           {/* <Box display="inline-block"  ml="3">
@@ -117,7 +117,7 @@ const Card = () => {
                 New
               </Badge>
               <Box
-                color='gray.500'
+                color='primary'
                 fontWeight='semibold'
                 letterSpacing='wide'
                 fontSize='xs'

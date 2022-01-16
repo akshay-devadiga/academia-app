@@ -8,8 +8,9 @@ import {
 const dummyArray = [1,2,3,4,5,6,7,8]
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
         <Grid
+        color="primary.800"
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(3, 1fr)"
         gap={3}
