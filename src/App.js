@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import Card from './components/Card.js';
+import Header from './components/Header';
 import {
   Stack,
   Grid
@@ -9,6 +10,7 @@ const dummyArray = [1,2,3,4,5,6,7,8]
 function App() {
   return (
     <div className="App" >
+      <Header/>
         <Grid
         color="primary.800"
         templateRows="repeat(2, 1fr)"
