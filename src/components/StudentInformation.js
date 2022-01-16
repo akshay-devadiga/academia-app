@@ -1,34 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
 import CourseCard from "./CourseCard";
 import {
   Stack,
   Grid,
-  ButtonProps,
-  Icon,
   Box,
   Button,
   FormControl,
   FormLabel,
   Input,
-  FormHelperText,
   Text,
   Image,
-  GridItem,
   Spacer,
   Textarea,
-  MenuItem,
-  MenuList,
-  MenuButton,
-  Menu,
   Avatar,
 } from "@chakra-ui/react";
 import {
-  BsWhatsapp,
-  BsMailbox,
-  BsPhone,
   BsChevronLeft,
-  BsChevronDown,
   BsSave2Fill,
   BsPlusSquareFill,
 } from "react-icons/bs";
@@ -38,7 +25,6 @@ import {
   AutoCompleteItem,
   AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete";
-const dummyArray = [1, 2, 3, 4];
 const StudentInformation = (props) => {
   const property = {
     rollNo: 1,
@@ -172,15 +158,15 @@ const StudentInformation = (props) => {
             </Stack>
           </Box>
         </Stack>
-        <Stack direction="row" ml="4" mb="4" justify="flex-start">
-          <Box mx="4" display="flex" align="left">
-            <Stack direction="column" ml="4" mb="4" justify="flex-start">
+        <Stack direction="row"  ml="4" mb="4" align="stretch" justify="space-between">
+          <Box mx="4" w='100%'align="left">
+            <Stack direction="column" ml="4" mb="4">
               <Text>About:</Text>
               <Textarea isDisabled placeholder={property.about} />
             </Stack>
           </Box>
-          <Box mx="4" display="flex" align="left">
-            <Stack direction="column" ml="4" mb="4" justify="flex-start">
+          <Box  mx="1"  w='100%' align="left">
+            <Stack direction="column" ml="0" mb="4">
               <Text>ResidentialAddress:</Text>
               <Textarea isDisabled placeholder={property.residentialAddress} />
             </Stack>
@@ -190,63 +176,35 @@ const StudentInformation = (props) => {
           <Stack direction="column" ml="4" mb="4" justify="flex-start">
             <Stack direction="row" mx="4" justify="space-between">
               <Text>Courses:</Text>
-
-              {/* <Menu>
-                <MenuButton
-                  leftIcon={<BsPlusSquareFill />}
-                  color="white"
-                  bg="primary.800"
-                  variant="solid"
-                  as={Button}
-                  rightIcon={<BsChevronDown />}
-                >
-                  Add Course
-                </MenuButton>
-                <MenuList>
-                  <MenuItem minH="48px">
-                    <Image
-                      boxSize="2rem"
-                      borderRadius="full"
-                      src="https://placekitten.com/100/100"
-                      alt="Fluffybuns the destroyer"
-                      mr="12px"
-                    />
-                    <span>Fluffybuns the Destroyer</span>
-                  </MenuItem>
-                  <MenuItem minH="40px">
-                    <Image
-                      boxSize="2rem"
-                      borderRadius="full"
-                      src="https://placekitten.com/120/120"
-                      alt="Simon the pensive"
-                      mr="12px"
-                    />
-                    <span>Simon the pensive</span>
-                  </MenuItem>
-                </MenuList>
-              </Menu> */}
-              <Button   leftIcon={<BsPlusSquareFill />}
-                  color="white"
-                  bg="primary.800"
-                  variant="solid">
-                      Add Course
-                  </Button>
+              <Button
+                leftIcon={<BsPlusSquareFill />}
+                color="white"
+                bg="primary.800"
+                variant="solid"
+              >
+                Add Course
+              </Button>
               <FormControl id="email" w="40vw">
                 <FormLabel>Search for courses</FormLabel>
-                <AutoComplete openOnFocus  w='100%' p={4}>
-                  <AutoCompleteInput variant="filled"  autocomplete="chrome-off"/>
-                  <AutoCompleteList  bg='white'>
+                <AutoComplete openOnFocus w="100%" p={4}>
+                  <AutoCompleteInput
+                    variant="filled"
+                    autocomplete="chrome-off"
+                  />
+                  <AutoCompleteList bg="white">
                     {property.courses.map((course, oid) => (
                       <AutoCompleteItem
                         key={`option-${oid}`}
                         value={course.name}
                         textTransform="capitalize"
                         align="center"
-                        color='primary.800'
-                        bg='green.400'
+                        color="primary.800"
+                        bg="green.400"
                         wrap
                         p="3"
-                        borderBottomWidth={oid==property.courses.length-1?'':'1px'}
+                        borderBottomWidth={
+                          oid === property.courses.length - 1 ? "" : "1px"
+                        }
                         borderColor="white"
                         borderRadius={0}
                       >
@@ -255,8 +213,13 @@ const StudentInformation = (props) => {
                           name={course.name}
                           src={course.image}
                         />
-                        <Text ml="4" fontWeight="bold">{course.name}</Text>
-                        <Text ml="4" fontWeight="light">{`${course.hours} hours`}</Text>
+                        <Text ml="4" fontWeight="bold">
+                          {course.name}
+                        </Text>
+                        <Text
+                          ml="4"
+                          fontWeight="light"
+                        >{`${course.hours} hours`}</Text>
                       </AutoCompleteItem>
                     ))}
                   </AutoCompleteList>
