@@ -19,6 +19,8 @@ import {
   MenuDivider,
   Divider,
   Button,
+  Flex,
+  useColorModeValue
 } from "@chakra-ui/react";
 import logo from "../logo.png";
 import { MdLogout } from "react-icons/md";
