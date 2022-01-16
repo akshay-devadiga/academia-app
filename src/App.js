@@ -10,7 +10,8 @@ function App() {
       {/* <Header/>
       <Content/> */}
       {/* <Login/> */}
-      <StudentInformation/>
+      <Content/>
+      {/* <StudentInformation/> */}
 
     </div>
   );

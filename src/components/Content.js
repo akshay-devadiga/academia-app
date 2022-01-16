@@ -40,8 +40,27 @@ const Content = (props) => {
       isDisabled: false,
     },
   });
+  var normalStyles = {
+    w: 7,
+    fontSize: "sm",
+    mx:3
+};
+var activeStyles = {
+    w: 7,
+    bg: "green.300",
+    fontSize: "sm",
+    _hover: {
+        bg: "blue.300"
+    },
+    mx:1
+};
+var separatorStyles = {
+    w: 7,
+    bg: "green.200",
+    mx:1
+};
   return (
-    <Box backgroundColor="base.900">
+    <Box >
       <Grid
         color="primary.800"
         templateRows="repeat(2, 1fr)"
@@ -54,20 +73,25 @@ const Content = (props) => {
           return <Card />;
         })}
       </Grid>
-      <Box maxWidth="7vw" display="inline-block" ml="3" align="right">
+      <Box maxWidth="27vw" display="inline-block" ml="3" align="right">
         <Paginator
           isDisabled={isDisabled}
           innerLimit={innerLimit}
           currentPage={currentPage}
           outerLimit={outerLimit}
           pagesQuantity={pagesQuantity}
+          activeStyles={activeStyles}
+          separatorStyles={separatorStyles}
+          normalStyles={normalStyles}
         >
+            {/*   onPageChange={handlePageChange} */}
           <Container align="center" justify="space-between" w="full" p={4}>
             <Previous>
-              <Icon as={BsFillArrowLeftCircleFill} w={6} h={6} />
+              <Icon as={BsChevronLeft} w={6} h={6} />
             </Previous>
+            <PageGroup isInline align="center" />
             <Next>
-              <Icon as={BsFillArrowRightCircleFill} w={6} h={6} />
+              <Icon as={BsChevronRight} w={6} h={6} />
             </Next>
           </Container>
         </Paginator>
