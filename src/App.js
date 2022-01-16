@@ -6,11 +6,11 @@ import StudentInformation from './components/StudentInformation';
 function App() {
   return (
     <div className="App" >
-      <Header/>
+      {/* <Header/> */}
       {/* <Header/>
       <Content/> */}
-      {/* <Login/> */}
-      <Content/>
+      <Login/>
+      {/* <Content/> */}
       {/* <StudentInformation/> */}
 
     </div>
