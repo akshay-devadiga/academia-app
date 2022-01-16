@@ -20,6 +20,7 @@ import {
 import { BsPersonFill, BsFillShieldLockFill } from "react-icons/bs";
 import logo from "../logo.png";
 import { login as loginUser } from "../APIServices";
+import {useNavigate} from "react-router-dom";
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailId, setEmailId] = React.useState("");
@@ -28,6 +29,7 @@ const Login = (props) => {
   const [showEmailWarning, setShowEmailWarning] = React.useState(false);
   const [showPasswordWarning, setShowPasswordWarning] = React.useState(false);
   const handleShowClick = () => setShowPassword(!showPassword);
+  let navigate = useNavigate();
   const checkEmailFormat = (email) => {
     return String(email)
       .toLowerCase()
@@ -49,9 +51,11 @@ const Login = (props) => {
     if (response && response.accessToken) {
       localStorage.setItem("accessToken", response.accessToken);
       // Redirect to dashboard
+      navigate('/dashboard');
     } else {
       setShowAlert(true);
       console.log("error");
+      navigate('/');
       // Redirect to login
     }
   };

@@ -24,7 +24,14 @@ import {
 } from "@chakra-ui/react";
 import logo from "../logo.png";
 import { MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 const Header = (props) => {
+let navigate = useNavigate();
+const logoutUser = async () => {
+    console.log("assda");
+    localStorage.removeItem("accessToken");
+    navigate('/');
+};
   return (
     <Box>
       <Box minHeight="2vh" py="2">
@@ -37,11 +44,12 @@ const Header = (props) => {
                 mr="2"
                 src="https://i.pravatar.cc/300"
                 name="profile"
+               
               />
             </MenuButton>
             <MenuList>
               <MenuGroup>
-                <MenuItem icon={<MdLogout />}>Logout</MenuItem>
+                <MenuItem icon={<MdLogout />} onClick={logoutUser} >Logout</MenuItem>
               </MenuGroup>
             </MenuList>
           </Menu>
