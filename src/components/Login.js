@@ -7,13 +7,12 @@ import {
   InputGroup,
   Stack,
   InputLeftElement,
-  chakra,
   Box,
   Image,
   FormControl,
   InputRightElement
 } from "@chakra-ui/react";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { BsPersonFill, BsFillShieldLockFill } from "react-icons/bs";
 import logo from "../logo.png";
 const Login = props => {
     const [showPassword, setShowPassword] = useState(false);
@@ -53,7 +52,7 @@ const Login = props => {
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
-                      children={<FaUserAlt color="primary" />}
+                      children={<BsPersonFill color="primary" />}
                     />
                     <Input type="email" placeholder="email address" />
                   </InputGroup>
@@ -63,7 +62,7 @@ const Login = props => {
                     <InputLeftElement
                       pointerEvents="none"
                       color="primary"
-                      children={<FaLock color="primary" />}
+                      children={<BsFillShieldLockFill color="primary" />}
                     />
                     <Input
                       type={showPassword ? "text" : "password"}
@@ -77,12 +76,9 @@ const Login = props => {
                   </InputGroup>
                 </FormControl>
                 <Button
-                  borderRadius={0}
                   type="submit"
-                  variant="ghost"
-                  color="white"
-                  bg="primary.800"
-                  width="full"
+                  colorScheme='primary.900'
+                  variant='outline'
                 >
                   Login
                 </Button>
