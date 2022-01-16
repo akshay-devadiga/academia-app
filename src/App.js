@@ -4,10 +4,52 @@ import Card from './components/Card.js';
 import Header from './components/Header';
 import {
   Stack,
-  Grid
+  Grid,
+  ButtonProps,
+  Icon,
+  Box
 } from "@chakra-ui/react";
+import {
+  BsChevronBarLeft,
+  BsChevronLeft,
+  BsChevronRight,
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill
+} from "react-icons/bs";
+import {
+  Paginator,
+  Container,
+  Previous,
+  usePaginator,
+  Next,
+  PageGroup
+} from "chakra-paginator";
 const dummyArray = [1,2,3,4,5,6,7,8]
 function App() {
+  const outerLimit = 2;
+  const innerLimit = 2;
+
+  const {
+    isDisabled,
+    pagesQuantity,
+    currentPage,
+    setCurrentPage,
+    setIsDisabled,
+    pageSize,
+    setPageSize,
+    offset // you may not need this most of the times, but it's returned for you anyway
+  } = usePaginator({
+    total: 20,
+    initialState: {
+      pageSize: 10,
+      currentPage: 1,
+      isDisabled: false
+    }
+  });
+
+
+  
+  
   return (
     <div className="App" >
       <Header/>
@@ -23,7 +65,25 @@ function App() {
          return <Card/>
       })}
       </Grid>
-     
+      <Box maxWidth="7vw" display="inline-block" ml="3"  align='right'>
+      <Paginator
+        isDisabled={isDisabled}
+        innerLimit={innerLimit}
+        currentPage={currentPage}
+        outerLimit={outerLimit}
+        pagesQuantity={pagesQuantity}
+      >
+        <Container align="center" justify="space-between" w="full" p={4}>
+          <Previous>
+            <Icon as={BsFillArrowLeftCircleFill} w={6} h={6} />
+          </Previous>
+          {/* <PageGroup isInline align="center" /> */}
+          <Next>
+            <Icon as={BsFillArrowRightCircleFill} w={6} h={6} />
+          </Next>
+        </Container>
+      </Paginator>
+      </Box>
     </div>
   );
 }

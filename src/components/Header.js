@@ -27,7 +27,7 @@ const Header = (props) => {
     <Box>
       <Box minHeight="2vh" py="2">
         <Stack direction="row" mx="2" justify="space-between">
-          <Image height="40px" ml="4" src={logo} />
+          <Image height="47px" ml="4" src={logo} />
           <Menu direction="rtl">
             <MenuButton colorScheme="pink">
               <Avatar
