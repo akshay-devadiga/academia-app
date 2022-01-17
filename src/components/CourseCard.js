@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BsChevronRight, BsX } from "react-icons/bs";
-const Card = ({ title, image, hours }) => {
+const CourseCard = ({ title, image, hours }) => {
   return (
     <Box
       display="inline-block"
@@ -87,4 +87,4 @@ const Card = ({ title, image, hours }) => {
   );
 };
 
-export default Card;
+export default CourseCard;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Image, Button, Spacer, Text } from "@chakra-ui/react";
-import NotFoundImage from "../404.png";
+import NotFoundImage from "../assets/images/404.png";
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 const NotFound = (props) => {

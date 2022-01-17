@@ -17,7 +17,7 @@ import {
   PageGroup,
 } from "chakra-paginator";
 
-import Card from "./Card.js";
+import StudentCard from "../../components/StudentCard";
 const dummyArray = [1, 2, 3, 4, 5, 6, 7, 8];
 const Content = (props) => {
   const outerLimit = 2;
@@ -70,7 +70,7 @@ var separatorStyles = {
         mt={20}
       >
         {dummyArray.map((d) => {
-          return <Card />;
+          return <StudentCard />;
         })}
       </Grid>
       <Box maxWidth="27vw" display="inline-block" ml="3" align="right">
@@ -99,7 +99,5 @@ var separatorStyles = {
     </Box>
   );
 };
-
 Content.propTypes = {};
-
 export default Content;

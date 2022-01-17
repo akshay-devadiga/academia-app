@@ -1,10 +1,10 @@
 import "./App.css";
 import Header from "./components/Header";
-import Content from "./components/Content";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import NotFound from "./components/NotFound";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Students from "./pages/students";
+import NotFound from "./pages/NotFound";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -46,8 +46,8 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="students" element={<RequireAuth />}>
-              <Route path=":id" element={<Dashboard />} />
-              <Route index element={<Dashboard />} />
+              <Route path=":id" element={<Students />} />
+              <Route index element={<Students />} />
             </Route>
             <Route path="login" element={<LoginState />} />
             <Route index element={<Home />} />

@@ -18,8 +18,8 @@ import {
   CloseButton,
 } from "@chakra-ui/react";
 import { BsPersonFill, BsFillShieldLockFill } from "react-icons/bs";
-import logo from "../logo.png";
-import { login as loginUser } from "../APIServices";
+import logo from "../assets/images/logo.png";
+import { login as loginUser } from "../service";
 import {useNavigate} from "react-router-dom";
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -80,12 +80,6 @@ const Login = (props) => {
     };
     validatePassword(password);
   }, [password]);
-//   useEffect(() => {
-//     let auth = localStorage.getItem('accessToken');
-//     if(auth){
-//       navigate('/students');
-//     }
-//   }, [navigate]);
   return (
     <Flex
       flexDirection="column"

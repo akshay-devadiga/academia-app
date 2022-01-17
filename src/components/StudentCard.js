@@ -9,8 +9,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { BsWhatsapp, BsMailbox, BsPhone, BsChevronRight } from "react-icons/bs";
-import "./StudentCard.css";
-const Card = () => {
+const StudentCard = () => {
   const property = {
     imageUrl: "https://cdn.vuetifyjs.com/images/john.jpg",
     imageAlt: "Rear view of modern home with pool",
@@ -141,4 +140,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default StudentCard;

@@ -22,7 +22,7 @@ import {
   Flex,
   useColorModeValue
 } from "@chakra-ui/react";
-import logo from "../logo.png";
+import logo from "../assets/images/logo.png";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 const Header = (props) => {
