@@ -12,21 +12,20 @@ import {
   Next,
   PageGroup,
 } from "chakra-paginator";
-
+import { useNavigate } from "react-router-dom";
 import StudentCard from "../../components/StudentCard";
 import { getStudents } from "../../service";
 const Students = () => {
+  const navigate = useNavigate();
   const toast = useToast()
   const limit = 9;
   const {
-    isDisabled,
     currentPage
   } = usePaginator({
     total: 20,
     initialState: {
       pageSize: limit,
-      currentPage: 1,
-      isDisabled: false,
+      currentPage: 1
     },
   });
   var normalStyles = {
@@ -70,6 +69,7 @@ const Students = () => {
 
   const goToStudentDetails = (selectedRollNo) =>{
     console.log(selectedRollNo,"selectedRollNo");
+    navigate(`/students/${selectedRollNo}`);
   }
 
   const copyPhoneNumberToClipboard = (primaryPhone) =>{
@@ -99,12 +99,11 @@ const Students = () => {
         mt={20}
       >
         {studentRecords.map((studentRecord) => {
-          return <StudentCard {...studentRecord} onWhatsAppClick={openWhatsapp} onMailClick={openMail} onPhoneClick={copyPhoneNumberToClipboard} onMoreDetailsClick={goToStudentDetails}/>;
+          return <StudentCard key={studentRecord.id} {...studentRecord} onWhatsAppClick={openWhatsapp} onMailClick={openMail} onPhoneClick={copyPhoneNumberToClipboard} onMoreDetailsClick={goToStudentDetails}/>;
         })}
       </Grid>
       <Box maxWidth="27vw" display="inline-block" ml="3" align="right">
         <Paginator
-          isDisabled={isDisabled}
           currentPage={currentPage}
           pagesQuantity={pagesQuantity}
           activeStyles={activeStyles}

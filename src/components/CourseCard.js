@@ -7,20 +7,21 @@ import {
   Icon,
   Divider,
   Tooltip,
+  Spacer,
+  Flex
 } from "@chakra-ui/react";
 import { BsChevronRight, BsX } from "react-icons/bs";
 import PropTypes from 'prop-types'
-const CourseCard = ({ title, image, hours }) => {
+const CourseCard = ({ title, thumbnail, totalHours }) => {
   return (
-    <Box
-      display="inline-block"
+    <Flex
+      direction="column"
       p="3"
       maxWidth="20vw"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
     >
-      <Stack direction="column" py="1" align="stretch" justify="stretch">
         <Box display="inline-block" ml="3" align="space-between">
           <Stack direction="row" justify="flex-end">
             <Box display="flex">
@@ -38,7 +39,7 @@ const CourseCard = ({ title, image, hours }) => {
             <Image
               borderRadius="full"
               boxSize="50px"
-              src={image}
+              src={thumbnail}
               alt={"Course Picture"}
             />
           </Box>
@@ -61,10 +62,11 @@ const CourseCard = ({ title, image, hours }) => {
               fontWeight="semi-bold"
               textAlign="left"
             >
-              {`${hours} videos`}
+              {`${totalHours} videos`}
             </Text>
           </Box>
         </Stack>
+        <Spacer/>
         <Divider />
         <Tooltip label="Coming soon!!" aria-label="A tooltip">
           <Box
@@ -73,7 +75,7 @@ const CourseCard = ({ title, image, hours }) => {
             ml="3"
             align="space-between"
           >
-            <Stack direction="row" justify="space-between">
+            <Stack direction="row" mt="3" justify="space-between">
               <Box display="flex" mr="3">
                 <Text>Learn More</Text>
               </Box>
@@ -83,8 +85,7 @@ const CourseCard = ({ title, image, hours }) => {
             </Stack>
           </Box>
         </Tooltip>
-      </Stack>
-    </Box>
+    </Flex>
   );
 };
 CourseCard.defaultProps = {

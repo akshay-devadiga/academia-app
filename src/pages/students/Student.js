@@ -1,5 +1,5 @@
-import React from "react";
-import CourseCard from "./CourseCard";
+import React, { useEffect, useState } from "react";
+import CourseCard from "../../components/CourseCard";
 import {
   Stack,
   Grid,
@@ -13,60 +13,67 @@ import {
   Spacer,
   Textarea,
   Avatar,
+  Flex,
 } from "@chakra-ui/react";
-import {
-  BsChevronLeft,
-  BsSave2Fill,
-  BsPlusSquareFill,
-} from "react-icons/bs";
-import {
-  AutoComplete,
-  AutoCompleteInput,
-  AutoCompleteItem,
-  AutoCompleteList,
-} from "@choc-ui/chakra-autocomplete";
-const StudentInformation = (props) => {
-  const property = {
-    rollNo: 1,
-    name: "Tony Stark",
-    emailId: "a@gmail.com",
-    primaryPhone: 9090909090,
-    secondaryPhone: 8080808080,
-    gender: "Male",
-    residentialAddress: "Some big street address",
-    about: "asdsdsd",
-    profilePicture: "https://robohash.org/39.96.1.102.png",
-    courses: [
-      {
-        id: 1,
-        name: "Introduction to js",
-        hours: "25",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png",
-      },
-      {
-        id: 2,
-        name: "Introduction to js",
-        hours: "21",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png",
-      },
-      {
-        id: 3,
-        name: "Introduction to js",
-        hours: "21",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png",
-      },
-      {
-        id: 4,
-        name: "Introduction to js",
-        hours: "21",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png",
-      },
-    ],
+import { BsChevronLeft, BsSave2Fill, BsEyeSlash, BsEye, BsCheckCircle } from "react-icons/bs";
+import { CUIAutoComplete } from "chakra-ui-autocomplete";
+import { getStudentByRollNo, getCourses, updateStudent } from "../../service";
+import { useNavigate, useParams } from "react-router-dom";
+const Student = () => {
+  let {rollNo} = useParams();
+  const [studentRecord, setStudentsRecord] = useState({});
+  const [showCoursesDropdown, setShowCoursesDropdown] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const [selectedCourses, setSelectedCourses] = useState([]);
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/students");
   };
+  
+  const saveStudentInfo = async () => {
+    let studentInfo = JSON.parse(JSON.stringify(studentRecord));
+    studentInfo.courses = selectedCourses;
+    await updateStudent(rollNo,selectedCourses);
+    setStudentsRecord(studentInfo);
+    goBack();
+  };
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      let response = await getCourses();
+      response = response.map(course=>({...course,label:course.name,value:course.id}))
+      await setCourses(response.filter(item => !studentRecord.courses.map(record=>record.id).includes(item.id)));
+    };
+    fetchCourses();
+  }, [studentRecord]);
+
+  useEffect(() => {
+    const fetchStudentRecord = async () => {
+      let response = await getStudentByRollNo(rollNo);
+      await setSelectedCourses(response.courses);
+      await setStudentsRecord(response);
+      
+    };
+    fetchStudentRecord();
+  });
+
+
+  const customRender = (selected) => {
+    return (
+      <Flex flexDir="row" alignItems="center">
+        <Avatar mr={2} size="sm" src={selected.thumbnail} />
+        <Text>{selected.name}</Text>
+      </Flex>
+    );
+  };
+  const updateSelectedCourses = (coursesSelectedByUser) => {
+    if (coursesSelectedByUser) {
+      setSelectedCourses(coursesSelectedByUser);
+    }
+  };
+  const isNewCourseSelected = () =>{
+   return (selectedCourses && selectedCourses.length) !== (studentRecord && studentRecord.courses && studentRecord.courses.length)
+  }
   return (
     <Box align="center">
       <Stack
@@ -85,7 +92,7 @@ const StudentInformation = (props) => {
                   borderRadius="full"
                   borderWidth="3px"
                   boxSize="30vh"
-                  src={property.profilePicture}
+                  src={studentRecord.profilePicture}
                   alt={"Student Picture"}
                 />
               </Box>
@@ -99,7 +106,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="rollNo"
-                    placeholder={property.rollNo}
+                    placeholder={studentRecord.rollNo}
                     type="number"
                   />
                 </FormControl>
@@ -108,7 +115,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="name"
-                    placeholder={property.name}
+                    placeholder={studentRecord.name}
                     type="text"
                   />
                 </FormControl>
@@ -117,7 +124,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="rollNo"
-                    placeholder={property.emailId}
+                    placeholder={studentRecord.emailId}
                     type="number"
                   />
                 </FormControl>
@@ -132,7 +139,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="rollNo"
-                    placeholder={property.primaryPhone}
+                    placeholder={studentRecord.primaryPhone}
                     type="number"
                   />
                 </FormControl>
@@ -141,7 +148,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="name"
-                    placeholder={property.secondaryPhone}
+                    placeholder={studentRecord.secondaryPhone}
                     type="number"
                   />
                 </FormControl>
@@ -150,7 +157,7 @@ const StudentInformation = (props) => {
                   <Input
                     isDisabled
                     id="gender"
-                    placeholder={property.gender}
+                    placeholder={studentRecord.gender}
                     type="number"
                   />
                 </FormControl>
@@ -158,118 +165,146 @@ const StudentInformation = (props) => {
             </Stack>
           </Box>
         </Stack>
-        <Stack direction="row"  ml="4" mb="4" align="stretch" justify="space-between">
-          <Box mx="4" w='100%'align="left">
+        <Stack
+          direction="row"
+          ml="4"
+          mb="4"
+          align="stretch"
+          justify="space-between"
+        >
+          <Box mx="4" w="100%" align="left">
             <Stack direction="column" ml="4" mb="4">
-              <Text>About:</Text>
-              <Textarea isDisabled placeholder={property.about} />
+              <Text>Field:</Text>
+              <Text isDisabled placeholder={studentRecord.about} />
             </Stack>
           </Box>
-          <Box  mx="1"  w='100%' align="left">
+          <Box mx="1" w="100%" align="left">
             <Stack direction="column" ml="0" mb="4">
               <Text>ResidentialAddress:</Text>
-              <Textarea isDisabled placeholder={property.residentialAddress} />
+              <Textarea
+                isDisabled
+                placeholder={studentRecord.residentialAddress}
+              />
             </Stack>
           </Box>
         </Stack>
         <Box display="inline-block" align="left">
           <Stack direction="column" ml="4" mb="4" justify="flex-start">
-            <Stack direction="row" mx="4" justify="space-between">
-              <Text>Courses:</Text>
-              <Button
-                leftIcon={<BsPlusSquareFill />}
-                color="white"
-                bg="primary.800"
-                variant="solid"
-              >
-                Add Course
-              </Button>
-              <FormControl id="email" w="40vw">
-                <FormLabel>Search for courses</FormLabel>
-                <AutoComplete openOnFocus w="100%" p={4}>
-                  <AutoCompleteInput
-                    variant="filled"
-                    autocomplete="chrome-off"
-                  />
-                  <AutoCompleteList bg="white">
-                    {property.courses.map((course, oid) => (
-                      <AutoCompleteItem
-                        key={`option-${oid}`}
-                        value={course.name}
-                        textTransform="capitalize"
-                        align="center"
-                        color="primary.800"
-                        bg="green.400"
-                        wrap
-                        p="3"
-                        borderBottomWidth={
-                          oid === property.courses.length - 1 ? "" : "1px"
-                        }
-                        borderColor="white"
-                        borderRadius={0}
-                      >
-                        <Avatar
-                          size="sm"
-                          name={course.name}
-                          src={course.image}
-                        />
-                        <Text ml="4" fontWeight="bold">
-                          {course.name}
-                        </Text>
-                        <Text
-                          ml="4"
-                          fontWeight="light"
-                        >{`${course.hours} hours`}</Text>
-                      </AutoCompleteItem>
-                    ))}
-                  </AutoCompleteList>
-                </AutoComplete>
-              </FormControl>
+            <Stack direction="column" mx="4" justify="space-between">
+              <Box mx="1" w="100%">
+                <Stack direction="column" mx="4" justify="space-between">
+                  <Box mx="1" w="100%" align="left">
+                    <Text>Courses:</Text>
+                  </Box>
+                  <Box mx="1" w="100%" h="100%" align="right">
+                    <Button
+                      leftIcon={
+                        !showCoursesDropdown ? <BsEye /> : <BsEyeSlash />
+                      }
+                      color="white"
+                      bg="primary.800"
+                      variant="solid"
+                      onClick={() => {
+                        setShowCoursesDropdown(!showCoursesDropdown);
+                      }}
+                    >
+                      {!showCoursesDropdown ? `Show courses` : `Hide courses`}
+                    </Button>
+                  </Box>
+                </Stack>
+              </Box>
+              {showCoursesDropdown ? (
+               <Box px={8} py={4}>
+               <CUIAutoComplete
+                 autocomplete="no"
+                 label="Choose preferred work locations"
+                 placeholder="Type a Country"
+                 items={courses}
+                 tagStyleProps={{
+                   display:'none'
+                 }}
+                 disableCreateItem
+                 icon={BsCheckCircle}
+                 selectedIconProps={{ color: "primary.800" }}
+                 itemRenderer={customRender}
+                 selectedItems={selectedCourses}
+                 onSelectedItemsChange={(changes) =>
+                   updateSelectedCourses(changes.selectedItems)
+                 }
+               />
+             </Box>
+              ) : (
+                ""
+              )}
             </Stack>
-
-            <Grid
-              color="primary.800"
-              templateRows="repeat(2, 1fr)"
-              templateColumns="repeat(4, 1fr)"
-              gap={3}
-              px={20}
-              mt={20}
-            >
-              {property.courses.map((course) => {
-                return (
-                  <CourseCard
-                    title={course.name}
-                    image={course.image}
-                    hours={course.hours}
-                  />
-                );
-              })}
-            </Grid>
+            {selectedCourses && selectedCourses.length > 0 ? (
+              <Grid
+                color="primary.800"
+                templateRows="repeat(2, 1fr)"
+                templateColumns="repeat(4, 1fr)"
+                gap={3}
+                px={20}
+                mt={20}
+              >
+                {selectedCourses.map((course) => {
+                  return (
+                    <CourseCard
+                      key={course.id}
+                      title={course.name}
+                      thumbnail={course.thumbnail}
+                      totalHours={course.totalHours}
+                    />
+                  );
+                })}
+              </Grid>
+            ) : (
+              ""
+            )}
           </Stack>
         </Box>
-        <Box display="inline-block">
-          <Button
+        <Box display="inline-block" mb="4">
+          {isNewCourseSelected()?<Button
             leftIcon={<BsSave2Fill />}
             color="white"
             bg="primary.800"
             variant="solid"
+            onClick={()=>{saveStudentInfo()}}
           >
             Save
-          </Button>
+          </Button>:
           <Button
             leftIcon={<BsChevronLeft />}
             colorScheme="primary.900"
             variant="ghost"
+            onClick={()=>{goBack()}}
           >
             Back
-          </Button>
-          <Spacer my="5" />
+          </Button>}
         </Box>
+        <Spacer/>
       </Stack>
     </Box>
   );
 };
 
-StudentInformation.propTypes = {};
+/*
+{
+  "rollNo": 3,
+  "name": "Frances Semonin",
+  "emailId": "fsemonin2@cargocollective.com",
+  "primaryPhone": "422-108-5458",
+  "secondaryPhone": "393-375-8036",
+  "gender": "Male",
+  "residentialAddress": "871 Lindbergh Crossing",
+  "about": "Support",
+  "profilePicture": "https://robohash.org/evenietminusqui.png?size=450x",
+  "courses": [
+      {
+          "name": "HTML5 Coding Essentials and Best Practices",
+          "totalHours": 48,
+          "thumbnail": "https://github.com/coherencez/tech-logos/blob/master/html5.png"
+      }
+  ]
+}*/
 
-export default StudentInformation;
+export default Student;

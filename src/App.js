@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Students from "./pages/students";
+import Student from "./pages/students/Student";
 import NotFound from "./pages/NotFound";
 import Layout from "./Layout"
 import {
@@ -36,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="students" element={<LayoutWrapper/>}>
-              <Route path=":id" element={<Students />} />
+              <Route path=":rollNo" element={<Student />} />
               <Route index element={<Students />} />
             </Route>
             <Route path="login" element={<LoginWrapper/>} />

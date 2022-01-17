@@ -70,13 +70,13 @@ const StudentCard = ({
               </Box>
               <Box display="inline-block" ml="3">
                 <Stack direction="row" py="1" justify="center">
-                  <Box display="inline-block" mr="1">
+                  <Box display="inline-block">
                     <IconButton
                       variant="outline"
                       color="green.300"
                       aria-label="Whatsapp Call"
-                      fontSize="xs"
-                      size="xs"
+                      fontSize="sm"
+                      size="sm"
                       onClick={()=>{onWhatsAppClick(primaryPhone)}}
                       icon={<BsWhatsapp />}
                     />
@@ -86,19 +86,19 @@ const StudentCard = ({
                       variant="outline"
                       color="primary.800"
                       aria-label="Whatsapp Call"
-                      fontSize="xs"
-                      size="xs"
+                      fontSize="sm"
+                      size="sm"
                       onClick={()=>{onMailClick(emailId)}}
                       icon={<BsMailbox />}
                     />
                   </Box>
-                  <Box display="inline-block" ml="3">
+                  <Box display="inline-block">
                     <IconButton
                       variant="outline"
                       color="primary.800"
                       aria-label="Whatsapp Call"
-                      fontSize="xs"
-                      size="xs"
+                      fontSize="sm"
+                      size="sm"
                       onClick={()=>{onPhoneClick(primaryPhone)}}
                       icon={<BsPhone />}
                     />
@@ -191,7 +191,7 @@ StudentCard.defaultProps = {
   onMoreDetailsClick:null
 };
 StudentCard.propTypes = {
-  rollNo: PropTypes.string,
+  rollNo: PropTypes.number,
   name: PropTypes.string,
   emailId: PropTypes.string,
   primaryPhone: PropTypes.string,
