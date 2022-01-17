@@ -22,7 +22,8 @@ Where in as a admin i should be able to
 ### Prerequisites:
 - Install Xampp  [Xampp Docs](https://www.apachefriends.org/index.html) 
 - Start Xampp Server
--![XAMPP Control Panel](https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots/EN_XAMPP_Control_Panel_2.PNG)
+
+![XAMPP Control Panel](https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots/EN_XAMPP_Control_Panel_2.PNG)
    
 ### To setup Backend:
 There is a seperate repository for the server here :point_right:  [academia-server-repo](https://github.com/akshay-devadiga/academia-server)
