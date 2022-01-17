@@ -6,13 +6,10 @@ import {
   Stack,
   Text,
   Icon,
+  IconButton,
 } from "@chakra-ui/react";
-import {
-  BsWhatsapp,
-  BsMailbox,
-  BsPhone,
-  BsChevronRight,
-} from "react-icons/bs";
+import { BsWhatsapp, BsMailbox, BsPhone, BsChevronRight } from "react-icons/bs";
+import "./StudentCard.css";
 const Card = () => {
   const property = {
     imageUrl: "https://cdn.vuetifyjs.com/images/john.jpg",
@@ -23,9 +20,26 @@ const Card = () => {
     formattedPrice: "$1,900.00",
     reviewCount: 34,
     rating: 4,
+    mailLink:'mailto:email@example.com?subject=Message From Admin',
+    whatsAppLink:"https://api.whatsapp.com/send?phone=3123213213&text=Hello%2CAdmin%20Here!%20I%20have%20contacted%20you%20via%20Academia",
   };
+  const openWhatsapp = () => {
+    window.open(property.whatsAppLink);
+  };
+  const openMail = () => {
+    window.open(property.mailLink);
+  };
+
+  window.open('')
   return (
-    <Box maxW="sm" p="5" borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Box
+      maxW="sm"
+      p="5"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      className="student-card"
+    >
       <Stack direction="row">
         <Box display="flex" alignItems="center">
           <Stack direction="column" py="1" justify="center">
@@ -52,13 +66,37 @@ const Card = () => {
             <Box display="inline-block" ml="3">
               <Stack direction="row" py="1" justify="center">
                 <Box display="inline-block" mr="1">
-                  <Icon color="green.300" as={BsWhatsapp} w={6} h={6} />
+                  <IconButton
+                    variant="outline"
+                    color="green.300"
+                    aria-label="Whatsapp Call"
+                    fontSize="xs"
+                    size="xs"
+                    onClick={openWhatsapp}
+                    icon={<BsWhatsapp />}
+                  />
                 </Box>
                 <Box display="inline-block">
-                  <Icon color="primary" as={BsMailbox} w={6} h={6} />
+                  <IconButton
+                    variant="outline"
+                    color="primary.800"
+                    aria-label="Whatsapp Call"
+                    fontSize="xs"
+                    size="xs"
+                    onClick={openMail}
+                    icon={<BsMailbox />}
+                  />
                 </Box>
                 <Box display="inline-block" ml="3">
-                  <Icon color="primary" as={BsPhone} w={6} h={6} />
+                  <IconButton
+                    variant="outline"
+                    color="primary.800"
+                    aria-label="Whatsapp Call"
+                    fontSize="xs"
+                    size="xs"
+                    onClick={openWhatsapp}
+                    icon={<BsPhone />}
+                  />
                 </Box>
               </Stack>
             </Box>
