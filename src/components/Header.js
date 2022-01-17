@@ -3,24 +3,14 @@ import PropTypes from "prop-types";
 import {
   Box,
   Image,
-  Badge,
   Stack,
   Avatar,
-  Text,
-  Circle,
-  HStack,
-  Icon,
-  IconButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuGroup,
-  MenuDivider,
   Divider,
-  Button,
-  Flex,
-  useColorModeValue
 } from "@chakra-ui/react";
 import logo from "../assets/images/logo.png";
 import { MdLogout } from "react-icons/md";
@@ -28,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 const Header = (props) => {
 let navigate = useNavigate();
 const logoutUser = async () => {
-    console.log("assda");
     localStorage.removeItem("accessToken");
     navigate('/');
 };
@@ -59,7 +48,4 @@ const logoutUser = async () => {
     </Box>
   );
 };
-
-Header.propTypes = {};
-
 export default Header;

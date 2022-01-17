@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BsChevronRight, BsX } from "react-icons/bs";
+import PropTypes from 'prop-types'
 const CourseCard = ({ title, image, hours }) => {
   return (
     <Box
@@ -86,5 +87,23 @@ const CourseCard = ({ title, image, hours }) => {
     </Box>
   );
 };
-
+CourseCard.defaultProps = {
+  id: null,
+  name: '',
+  totalHours: null,
+  thumbnail: ''
+}
+CourseCard.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  totalHours: PropTypes.number,
+  thumbnail: PropTypes.string
+}
 export default CourseCard;
+/*
+ "Id": 1,
+        "Name": "Modern JavaScript From The Beginning",
+        "TotalHours": 42,
+        "Thumbnail": "https://github.com/coherencez/tech-logos/blob/master/jslogo.png"
+
+*/

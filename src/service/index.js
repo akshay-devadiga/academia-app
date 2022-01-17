@@ -11,10 +11,16 @@ export const login = async (user) => {
     }
 }
 
-export const getStudents = async (user) => {
+export const getStudents = async (page,limit) => {
     try {
-      const response = await axios.get(`/students`);
-      return response.result;
+      let params ={
+        page,
+        limit
+      }
+      const response = await axios.get(`/students`,{
+        params
+      });
+      return response.data;
     } catch (error) {
       console.error(error);
     }
