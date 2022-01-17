@@ -9,7 +9,15 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { BsWhatsapp, BsMailbox, BsPhone, BsChevronRight } from "react-icons/bs";
-const StudentCard = () => {
+import PropTypes from 'prop-types'
+const StudentCard = ({
+  rollNo,
+  name,
+  emailId,
+  primaryPhone,
+  about,
+  profilePicture
+}) => {
   const property = {
     imageUrl: "https://cdn.vuetifyjs.com/images/john.jpg",
     imageAlt: "Rear view of modern home with pool",
@@ -139,5 +147,30 @@ const StudentCard = () => {
     </Box>
   );
 };
-
+StudentCard.defaultProps = {
+  rollNo: null,
+  name: '',
+  emailId: '',
+  primaryPhone: '',
+  about: '',
+  profilePicture:''
+}
+StudentCard.propTypes = {
+  rollNo: PropTypes.string,
+  name: PropTypes.string,
+  emailId: PropTypes.string,
+  primaryPhone: PropTypes.string,
+  about: PropTypes.string,
+  profilePicture: PropTypes.string
+}
 export default StudentCard;
+
+// "RollNo": 3,
+// "Name": "Frances Semonin",
+// "EmailId": "fsemonin2@cargocollective.com",
+// "PrimaryPhone": "422-108-5458",
+// "SecondaryPhone": "393-375-8036",
+// "Gender": "Male",
+// "ResidentialAddress": "871 Lindbergh Crossing",
+// "About": "Support",
+// "ProfilePicture": "https://robohash.org/evenietminusqui.png?size=450x"

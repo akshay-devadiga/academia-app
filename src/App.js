@@ -1,38 +1,28 @@
 import "./App.css";
-import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Students from "./pages/students";
 import NotFound from "./pages/NotFound";
-
+import Layout from "./Layout"
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Outlet,
   Navigate,
 } from "react-router-dom";
 function App() {
-  function CommonDashboard() {
-    return (
-      <>
-        <Header />
-        <Outlet />
-      </>
-    );
-  }
   function getAuthState(){
     return localStorage.getItem("accessToken");
   }
-  function RequireAuth() {
+  function LayoutWrapper() {
     let auth = getAuthState();
     if (!auth) {
       return <Navigate to="/login" />;
     }
 
-    return <CommonDashboard />;
+    return <Layout />;
   }
-  function LoginState(){
+  function LoginWrapper(){
     let auth = getAuthState();
     if (!auth) {
       return <Login />;
@@ -45,11 +35,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/">
-            <Route path="students" element={<RequireAuth />}>
+            <Route path="students" element={<LayoutWrapper/>}>
               <Route path=":id" element={<Students />} />
               <Route index element={<Students />} />
             </Route>
-            <Route path="login" element={<LoginState />} />
+            <Route path="login" element={<LoginWrapper/>} />
             <Route index element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Route>

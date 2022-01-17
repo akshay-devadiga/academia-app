@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const NotFound = (props) => {
   const navigate = useNavigate();
   const goBack = () => {
-    navigate("/");
+    navigate("/login");
   };
   return (
     <Box align="center" p="4" justify="center">
