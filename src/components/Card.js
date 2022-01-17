@@ -29,8 +29,6 @@ const Card = () => {
   const openMail = () => {
     window.open(property.mailLink);
   };
-
-  window.open('')
   return (
     <Box
       maxW="sm"

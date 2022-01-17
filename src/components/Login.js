@@ -51,7 +51,7 @@ const Login = (props) => {
     if (response && response.accessToken) {
       localStorage.setItem("accessToken", response.accessToken);
       // Redirect to dashboard
-      navigate('/dashboard');
+      navigate('/students');
     } else {
       setShowAlert(true);
       console.log("error");
@@ -80,6 +80,12 @@ const Login = (props) => {
     };
     validatePassword(password);
   }, [password]);
+//   useEffect(() => {
+//     let auth = localStorage.getItem('accessToken');
+//     if(auth){
+//       navigate('/students');
+//     }
+//   }, [navigate]);
   return (
     <Flex
       flexDirection="column"

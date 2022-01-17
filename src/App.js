@@ -1,42 +1,60 @@
 import "./App.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
-import { BrowserRouter as Router, Routes, Route,Outlet,Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 function App() {
+  function CommonDashboard() {
+    return (
+      <>
+        <Header />
+        <Outlet />
+      </>
+    );
+  }
+  function getAuthState(){
+    return localStorage.getItem("accessToken");
+  }
   function RequireAuth() {
-    let auth = localStorage.getItem('accessToken');
+    let auth = getAuthState();
     if (!auth) {
-      // Redirect them to the /login page, but save the current location they were
-      // trying to go to when they were redirected. This allows us to send them
-      // along to that page after they login, which is a nicer user experience
-      // than dropping them off on the home page.
-      return <Navigate to="/"  />;
+      return <Navigate to="/login" />;
     }
-  
-    return <Outlet />;
+
+    return <CommonDashboard />;
+  }
+  function LoginState(){
+    let auth = getAuthState();
+    if (!auth) {
+      return <Login />;
+    }
+
+    return <Navigate to="/students" />;
   }
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route element={<RequireAuth />}>
-            <Route exact path="/dashboard" element={<Dashboard />} />
-            <Route exact path="/student" element={<Dashboard />} />
+          <Route path="/">
+            <Route path="students" element={<RequireAuth />}>
+              <Route path=":id" element={<Dashboard />} />
+              <Route index element={<Dashboard />} />
+            </Route>
+            <Route path="login" element={<LoginState />} />
+            <Route index element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-
-      {/* <Header/> */}
-      {/* <Header/>
-      <Content/> */}
-      {/* <Login/> */}
-      {/* <Content/> */}
-      {/* <StudentInformation/> */}
     </div>
   );
 }

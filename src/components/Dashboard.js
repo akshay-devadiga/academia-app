@@ -5,7 +5,7 @@ import Content from './Content';
 const Dashboard = props => {
     return (
         <>
-           <Header/> 
+           {/* <Header/>  */}
             <Content/>
         </>
     )
