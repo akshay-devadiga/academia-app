@@ -14,12 +14,12 @@ import {
 import logo from "../assets/images/logo.png";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-const Header = (props) => {
-let navigate = useNavigate();
-const logoutUser = async () => {
+const Header = () => {
+  let navigate = useNavigate();
+  const logoutUser = async () => {
     localStorage.removeItem("accessToken");
-    navigate('/');
-};
+    navigate("/");
+  };
   return (
     <Box>
       <Box minHeight="2vh" py="2">
@@ -32,12 +32,13 @@ const logoutUser = async () => {
                 mr="2"
                 src="https://randomuser.me/api/portraits/men/22.jpg"
                 name="profile"
-               
               />
             </MenuButton>
             <MenuList>
               <MenuGroup>
-                <MenuItem icon={<MdLogout />} onClick={logoutUser} >Logout</MenuItem>
+                <MenuItem icon={<MdLogout />} onClick={logoutUser}>
+                  Logout
+                </MenuItem>
               </MenuGroup>
             </MenuList>
           </Menu>

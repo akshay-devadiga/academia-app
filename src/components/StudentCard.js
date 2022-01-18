@@ -31,7 +31,7 @@ const StudentCard = ({
   onWhatsAppClick,
   onMailClick,
   onMoreDetailsClick,
-  onPhoneClick
+  onPhoneClick,
 }) => {
   const imageAlt = "Student Picture";
   return (
@@ -77,7 +77,9 @@ const StudentCard = ({
                       aria-label="Whatsapp Call"
                       fontSize="sm"
                       size="sm"
-                      onClick={()=>{onWhatsAppClick(primaryPhone)}}
+                      onClick={() => {
+                        onWhatsAppClick(primaryPhone);
+                      }}
                       icon={<BsWhatsapp />}
                     />
                   </Box>
@@ -88,7 +90,9 @@ const StudentCard = ({
                       aria-label="Whatsapp Call"
                       fontSize="sm"
                       size="sm"
-                      onClick={()=>{onMailClick(emailId)}}
+                      onClick={() => {
+                        onMailClick(emailId);
+                      }}
                       icon={<BsMailbox />}
                     />
                   </Box>
@@ -99,7 +103,9 @@ const StudentCard = ({
                       aria-label="Whatsapp Call"
                       fontSize="sm"
                       size="sm"
-                      onClick={()=>{onPhoneClick(primaryPhone)}}
+                      onClick={() => {
+                        onPhoneClick(primaryPhone);
+                      }}
                       icon={<BsPhone />}
                     />
                   </Box>
@@ -172,7 +178,9 @@ const StudentCard = ({
           aria-label="Whatsapp Call"
           fontSize="lg"
           size="lg"
-          onClick={()=>{onMoreDetailsClick(rollNo)}}
+          onClick={() => {
+            onMoreDetailsClick(rollNo);
+          }}
           icon={<BsChevronRight />}
         />
       </Box>
@@ -186,9 +194,9 @@ StudentCard.defaultProps = {
   primaryPhone: "",
   about: "",
   profilePicture: "",
-  onWhatsAppClick:null,
-  onMailClick:null,
-  onMoreDetailsClick:null
+  onWhatsAppClick: null,
+  onMailClick: null,
+  onMoreDetailsClick: null,
 };
 StudentCard.propTypes = {
   rollNo: PropTypes.number,
@@ -198,17 +206,7 @@ StudentCard.propTypes = {
   about: PropTypes.string,
   profilePicture: PropTypes.string,
   onWhatsAppClick: PropTypes.func,
-  onMailClick:PropTypes.func,
-  onMoreDetailsClick:PropTypes.func
+  onMailClick: PropTypes.func,
+  onMoreDetailsClick: PropTypes.func,
 };
 export default StudentCard;
-
-// "RollNo": 3,
-// "Name": "Frances Semonin",
-// "EmailId": "fsemonin2@cargocollective.com",
-// "PrimaryPhone": "422-108-5458",
-// "SecondaryPhone": "393-375-8036",
-// "Gender": "Male",
-// "ResidentialAddress": "871 Lindbergh Crossing",
-// "About": "Support",
-// "ProfilePicture": "https://robohash.org/evenietminusqui.png?size=450x"

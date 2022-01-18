@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Students from "./pages/students";
 import Student from "./pages/students/Student";
 import NotFound from "./pages/NotFound";
-import Layout from "./Layout"
+import Layout from "./Layout";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,7 +12,7 @@ import {
   Navigate,
 } from "react-router-dom";
 function App() {
-  function getAuthState(){
+  function getAuthState() {
     return localStorage.getItem("accessToken");
   }
   function LayoutWrapper() {
@@ -23,7 +23,7 @@ function App() {
 
     return <Layout />;
   }
-  function LoginWrapper(){
+  function LoginWrapper() {
     let auth = getAuthState();
     if (!auth) {
       return <Login />;
@@ -36,11 +36,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/">
-            <Route path="students" element={<LayoutWrapper/>}>
+            <Route path="students" element={<LayoutWrapper />}>
               <Route path=":rollNo" element={<Student />} />
               <Route index element={<Students />} />
             </Route>
-            <Route path="login" element={<LoginWrapper/>} />
+            <Route path="login" element={<LoginWrapper />} />
             <Route index element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Route>

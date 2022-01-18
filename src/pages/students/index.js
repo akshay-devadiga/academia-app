@@ -84,7 +84,7 @@ const Students = () => {
   }, []);
 
   return (
-    <Stack >
+    <Stack>
       <Box>
         <Grid
           color="primary.800"
@@ -112,7 +112,7 @@ const Students = () => {
           })}
         </Grid>
       </Box>
-     <Box display="display-inline" justify="center" align="center">
+      <Box display="display-inline" justify="center" align="center">
         <Paginator
           currentPage={currentPage}
           pagesQuantity={pagesQuantity}
@@ -131,7 +131,7 @@ const Students = () => {
             </Next>
           </Container>
         </Paginator>
-        </Box>
+      </Box>
     </Stack>
   );
 };

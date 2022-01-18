@@ -52,17 +52,18 @@ const Student = () => {
         label: course.name,
         value: course.id,
       }));
-      if(studentRecord && studentRecord.courses.length>0){
+      if (studentRecord && studentRecord.courses.length > 0) {
         await setCourses(
           response.filter(
             (item) =>
-              !studentRecord.courses.map((record) => record.id).includes(item.id)
+              !studentRecord.courses
+                .map((record) => record.id)
+                .includes(item.id)
           )
         );
-      }else{
+      } else {
         await setCourses(response);
       }
-      
     };
     fetchCourses();
   }, [studentRecord]);
@@ -74,7 +75,7 @@ const Student = () => {
       await setStudentsRecord(response);
     };
     fetchStudentRecord();
-  },[rollNo]);
+  }, [rollNo]);
 
   const customRender = (selected) => {
     return (
@@ -196,7 +197,7 @@ const Student = () => {
           align="stretch"
           justify="space-between"
         >
-          <Box mx={[4,4,8,8]} display="flex" align="left">
+          <Box mx={[4, 4, 8, 8]} display="flex" align="left">
             <Stack direction={["column", "row", "row", "row"]}>
               <Box mr="4" display="inline-block" align="left">
                 <FormControl mt="4">
@@ -210,12 +211,12 @@ const Student = () => {
                 </FormControl>
               </Box>
               <Box mr="4" display="inline-block" align="left">
-              <FormControl mt="4">
+                <FormControl mt="4">
                   <FormLabel htmlFor="rollNo">ResidentialAddress:</FormLabel>
                   <Textarea
-                  isDisabled
-                  placeholder={studentRecord.residentialAddress}
-                />
+                    isDisabled
+                    placeholder={studentRecord.residentialAddress}
+                  />
                 </FormControl>
               </Box>
             </Stack>
@@ -224,18 +225,22 @@ const Student = () => {
         <Box display="inline-block" align="left">
           <Stack direction="column" ml="4" mb="4" justify="flex-start">
             <Stack direction={["row", "row", "row", "row"]}>
-              <Box  ml={[1,4,4,4]} display="inline-block" align="left">
+              <Box ml={[1, 4, 4, 4]} display="inline-block" align="left">
                 <FormControl mt="4">
                   <FormLabel htmlFor="courses">Courses:</FormLabel>
                 </FormControl>
               </Box>
-              <Box display="inline-block"  justify="center" align="left">
+              <Box display="inline-block" justify="center" align="left">
                 <Button
                   mt="4"
                   leftIcon={!showCoursesDropdown ? <BsEye /> : <BsEyeSlash />}
-                  color="white"
-                  bg="primary.800"
-                  variant="solid"
+                  colorScheme={"primary.900"}
+                  rounded={"lg"}
+                  variant={"outline"}
+                  _hover={{
+                    bg: "primary.800",
+                    color: "white",
+                  }}
                   size="xs"
                   onClick={() => {
                     setShowCoursesDropdown(!showCoursesDropdown);
@@ -247,28 +252,28 @@ const Student = () => {
             </Stack>
             <Stack direction={["column", "row", "row", "row"]}>
               <Box mr="4" display="inline-block" align="left">
-              {showCoursesDropdown ? (
-               <Box px={2} py={2}>
-               <CUIAutoComplete
-                 autocomplete="no"
-                 placeholder="Search by course name"
-                 items={courses}
-                 tagStyleProps={{
-                   display:'none'
-                 }}
-                 disableCreateItem
-                 icon={BsCheckCircle}
-                 selectedIconProps={{ color: "primary.800" }}
-                 itemRenderer={customRender}
-                 selectedItems={selectedCourses}
-                 onSelectedItemsChange={(changes) =>
-                   updateSelectedCourses(changes.selectedItems)
-                 }
-               />
-             </Box>
-              ) : (
-                ""
-              )}
+                {showCoursesDropdown ? (
+                  <Box px={2} py={2}>
+                    <CUIAutoComplete
+                      autocomplete="no"
+                      placeholder="Search by course name"
+                      items={courses}
+                      tagStyleProps={{
+                        display: "none",
+                      }}
+                      disableCreateItem
+                      icon={BsCheckCircle}
+                      selectedIconProps={{ color: "primary.800" }}
+                      itemRenderer={customRender}
+                      selectedItems={selectedCourses}
+                      onSelectedItemsChange={(changes) =>
+                        updateSelectedCourses(changes.selectedItems)
+                      }
+                    />
+                  </Box>
+                ) : (
+                  ""
+                )}
               </Box>
             </Stack>
             {selectedCourses && selectedCourses.length > 0 ? (
@@ -305,9 +310,14 @@ const Student = () => {
           {isNewCourseSelected() ? (
             <Button
               leftIcon={<BsSave2Fill />}
-              color="white"
-              bg="primary.800"
-              variant="solid"
+              colorScheme={"primary.900"}
+              rounded={"lg"}
+              variant={"outline"}
+              px={6}
+              _hover={{
+                bg: "primary.800",
+                color: "white",
+              }}
               onClick={() => {
                 saveStudentInfo();
               }}
@@ -318,7 +328,13 @@ const Student = () => {
             <Button
               leftIcon={<BsChevronLeft />}
               colorScheme="primary.900"
-              variant="ghost"
+              variant="outline"
+              rounded={"lg"}
+              px={6}
+              _hover={{
+                bg: "primary.800",
+                color: "white",
+              }}
               onClick={() => {
                 goBack();
               }}
@@ -332,25 +348,5 @@ const Student = () => {
     </Box>
   );
 };
-
-/*
-{
-  "rollNo": 3,
-  "name": "Frances Semonin",
-  "emailId": "fsemonin2@cargocollective.com",
-  "primaryPhone": "422-108-5458",
-  "secondaryPhone": "393-375-8036",
-  "gender": "Male",
-  "residentialAddress": "871 Lindbergh Crossing",
-  "about": "Support",
-  "profilePicture": "https://robohash.org/evenietminusqui.png?size=450x",
-  "courses": [
-      {
-          "name": "HTML5 Coding Essentials and Best Practices",
-          "totalHours": 48,
-          "thumbnail": "https://github.com/coherencez/tech-logos/blob/master/html5.png"
-      }
-  ]
-}*/
 
 export default Student;

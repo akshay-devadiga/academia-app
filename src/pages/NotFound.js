@@ -16,8 +16,14 @@ const NotFound = (props) => {
         <Button
           p="4"
           leftIcon={<BsChevronLeft />}
-          colorScheme="primary.900"
-          variant="ghost"
+          colorScheme={'primary.900'}
+              rounded={'lg'}
+              variant={'outline'}
+              px={6}
+              _hover={{
+                bg: 'primary.800',
+                color: 'white'
+              }}
           onClick={goBack}
         >
           Back

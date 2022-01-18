@@ -20,8 +20,8 @@ import {
 import { BsPersonFill, BsFillShieldLockFill } from "react-icons/bs";
 import logo from "../assets/images/logo.png";
 import { login as loginUser } from "../service";
-import {useNavigate} from "react-router-dom";
-const Login = (props) => {
+import { useNavigate } from "react-router-dom";
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailId, setEmailId] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -39,7 +39,7 @@ const Login = (props) => {
   };
 
   const checkPasswordLength = (password) => {
-    return String(password).length>4;
+    return String(password).length > 4;
   };
 
   const submit = async () => {
@@ -50,10 +50,10 @@ const Login = (props) => {
     let response = await loginUser(user);
     if (response && response.accessToken) {
       localStorage.setItem("accessToken", response.accessToken);
-      navigate('/students');
+      navigate("/students");
     } else {
       setShowAlert(true);
-      navigate('/');
+      navigate("/");
     }
   };
   useEffect(() => {
@@ -82,7 +82,6 @@ const Login = (props) => {
       flexDirection="column"
       width="100wh"
       height="100vh"
-      backgroundColor="base.900"
       justifyContent="center"
       alignItems="center"
     >
@@ -109,12 +108,18 @@ const Login = (props) => {
               <CloseButton position="absolute" right="8px" top="8px" />
             </Alert>
           ) : null}
-          {(showEmailWarning || showPasswordWarning) ? (
+          {showEmailWarning || showPasswordWarning ? (
             <Alert status="warning">
               <AlertIcon />
               <Box flex="1">
                 <AlertDescription display="block">
-                  {`Please enter a valid ${showEmailWarning && showPasswordWarning?' email id & password':showEmailWarning?' email id.':' password.'}`}
+                  {`Please enter a valid ${
+                    showEmailWarning && showPasswordWarning
+                      ? " email id & password"
+                      : showEmailWarning
+                      ? " email id."
+                      : " password."
+                  }`}
                 </AlertDescription>
               </Box>
               <CloseButton position="absolute" right="8px" top="8px" />
@@ -127,7 +132,7 @@ const Login = (props) => {
               backgroundColor="whiteAlpha.900"
               boxShadow="md"
             >
-              <Box minW={{ base: "90%", md: "468px" }} align="center">
+              <Box align="center">
                 <Image height="70px" src={logo} />
               </Box>
 
@@ -165,10 +170,15 @@ const Login = (props) => {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-              {/*    type="submit" */}
               <Button
-                colorScheme="primary.900"
-                variant="outline"
+                colorScheme={"primary.900"}
+                rounded={"lg"}
+                variant={"outline"}
+                px={6}
+                _hover={{
+                  bg: "primary.800",
+                  color: "white",
+                }}
                 onClick={submit}
                 isDisabled={showEmailWarning || showPasswordWarning}
               >
@@ -181,7 +191,4 @@ const Login = (props) => {
     </Flex>
   );
 };
-
-Login.propTypes = {};
-
 export default Login;
