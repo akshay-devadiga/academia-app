@@ -1,6 +1,6 @@
 # Academia 
 
-### App Demo: Demo Link
+### App Demo: (Academia App)[https://academia-app-proj.herokuapp.com/]
 
 
 ### What is this app about?
