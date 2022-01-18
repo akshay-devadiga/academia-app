@@ -49,7 +49,7 @@ const StudentCard = ({
           <Box display="flex" w="100%" alignItems="center">
             <Stack direction="column" py="1" justify="center">
               <Box display="inline-block" align="center" justify="center">
-                <Badge borderRadius="full" px="2" my="1" colorScheme="primary">
+                <Badge borderRadius="lg" px="2" my="1" colorScheme="primary">
                   <Text fontWeight="light" color="white">
                     {`NM-000${rollNo}`}
                   </Text>
