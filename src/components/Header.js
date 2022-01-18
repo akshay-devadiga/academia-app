@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {
   Box,
   Image,
@@ -31,7 +30,7 @@ const logoutUser = async () => {
               <Avatar
                 size="md"
                 mr="2"
-                src="https://i.pravatar.cc/300"
+                src="https://randomuser.me/api/portraits/men/22.jpg"
                 name="profile"
                
               />

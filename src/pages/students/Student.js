@@ -115,7 +115,7 @@ const Student = () => {
             <Stack direction="column" align="center" justify="center">
               <Box ml="4" display="inline-block" align="center">
                 <Image
-                  borderRadius="full"
+                  borderRadius="lg"
                   borderWidth="3px"
                   boxSize="30vh"
                   src={studentRecord.profilePicture}

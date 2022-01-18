@@ -57,7 +57,7 @@ const StudentCard = ({
               </Box>
               <Box display="inline-block" align="center" justify="center">
                 <Image
-                  borderRadius="full"
+                  borderRadius="lg"
                   boxSize="100px"
                   src={profilePicture}
                   alt={imageAlt}

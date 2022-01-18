@@ -37,7 +37,7 @@ const CourseCard = ({ title, thumbnail, totalHours }) => {
         >
           <Box display="inline-block" mr="3">
             <Image
-              borderRadius="full"
+              borderRadius="lg"
               boxSize="50px"
               src={thumbnail}
               alt={"Course Picture"}
