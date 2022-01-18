@@ -55,7 +55,7 @@ const StudentCard = ({
                   </Text>
                 </Badge>
               </Box>
-              <Box display="inline-block">
+              <Box display="inline-block" align="center" justify="center">
                 <Image
                   borderRadius="full"
                   boxSize="100px"
