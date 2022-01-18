@@ -52,7 +52,7 @@ const Student = () => {
         label: course.name,
         value: course.id,
       }));
-      if (studentRecord && studentRecord.courses.length > 0) {
+      if (studentRecord && studentRecord.courses && studentRecord.courses.length > 0) {
         await setCourses(
           response.filter(
             (item) =>
@@ -77,7 +77,7 @@ const Student = () => {
     fetchStudentRecord();
   }, [rollNo]);
 
-  const customRender = (selected) => {
+  const customItem = (selected) => {
     return (
       <Flex flexDir="row" alignItems="center">
         <Avatar mr={2} size="sm" src={selected.thumbnail} />
@@ -264,7 +264,7 @@ const Student = () => {
                       disableCreateItem
                       icon={BsCheckCircle}
                       selectedIconProps={{ color: "primary.800" }}
-                      itemRenderer={customRender}
+                      itemRenderer={customItem}
                       selectedItems={selectedCourses}
                       onSelectedItemsChange={(changes) =>
                         updateSelectedCourses(changes.selectedItems)

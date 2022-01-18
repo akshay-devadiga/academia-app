@@ -10,7 +10,7 @@ import {
   Spacer,
   Flex,
 } from "@chakra-ui/react";
-import { BsChevronRight, BsX } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 import PropTypes from "prop-types";
 const CourseCard = ({ title, thumbnail, totalHours }) => {
   return (
@@ -25,7 +25,9 @@ const CourseCard = ({ title, thumbnail, totalHours }) => {
       <Box display="inline-block" ml="3" align="space-between">
         <Stack direction="row" justify="flex-end">
           <Box display="flex">
-            <Icon color="red.300" as={BsX} w={6} h={6} />
+            {/* <Tooltip label="Coming soon!!" aria-label="A tooltip">
+              <Icon color="red.300" as={BsX} w={6} h={6} />
+            </Tooltip> */}
           </Box>
         </Stack>
       </Box>
