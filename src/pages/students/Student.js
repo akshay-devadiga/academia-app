@@ -294,9 +294,7 @@ const Student = () => {
                   return (
                     <CourseCard
                       key={course.id}
-                      title={course.name}
-                      thumbnail={course.thumbnail}
-                      totalHours={course.totalHours}
+                      {...course}
                     />
                   );
                 })}

@@ -33,7 +33,6 @@ const StudentCard = ({
   onMoreDetailsClick,
   onPhoneClick,
 }) => {
-  const imageAlt = "Student Picture";
   return (
     <Flex
       maxW="sm"
@@ -43,6 +42,7 @@ const StudentCard = ({
       overflow="hidden"
       className="student-card"
       direction="column"
+      data-testid={`student-${rollNo}`}
     >
       <Box>
         <Stack direction="row">
@@ -50,7 +50,7 @@ const StudentCard = ({
             <Stack direction="column" py="1" justify="center">
               <Box display="inline-block" align="center" justify="center">
                 <Badge borderRadius="lg" px="2" my="1" colorScheme="primary">
-                  <Text fontWeight="light" color="white">
+                  <Text fontWeight="light" color="white" data-testid={`roll-no`}>
                     {`NM-000${rollNo}`}
                   </Text>
                 </Badge>
@@ -60,11 +60,11 @@ const StudentCard = ({
                   borderRadius="lg"
                   boxSize="100px"
                   src={profilePicture}
-                  alt={imageAlt}
+                  alt={'Student Image'}
                 />
               </Box>
               <Box display="inline-block">
-                <Text fontWeight="bold" fontSize="md" color="primary">
+                <Text data-testid={`name`} fontWeight="bold" fontSize="md" color="primary">
                   {name}
                 </Text>
               </Box>
@@ -144,6 +144,7 @@ const StudentCard = ({
                     key={"sm"}
                     variant="outline"
                     colorScheme="primary.800"
+                    data-testid={`about`}
                   >
                     <TagLeftIcon as={BsBookHalf} />
                     <TagLabel> {about}</TagLabel>
@@ -161,6 +162,7 @@ const StudentCard = ({
                     fontSize="xs"
                     textAlign="left"
                     textTransform="uppercase"
+                    data-testid={`residential-address`}
                   >
                     {residentialAddress}
                   </Text>
@@ -194,6 +196,7 @@ StudentCard.defaultProps = {
   primaryPhone: "",
   about: "",
   profilePicture: "",
+  residentialAddress: "",
   onWhatsAppClick: null,
   onMailClick: null,
   onMoreDetailsClick: null,
@@ -205,6 +208,7 @@ StudentCard.propTypes = {
   primaryPhone: PropTypes.string,
   about: PropTypes.string,
   profilePicture: PropTypes.string,
+  residentialAddress: PropTypes.string,
   onWhatsAppClick: PropTypes.func,
   onMailClick: PropTypes.func,
   onMoreDetailsClick: PropTypes.func,
