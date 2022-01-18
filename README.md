@@ -53,6 +53,11 @@ Run ```npm start ```
 
 Note: Please verify if the server is up at 3000 or update the port number in services - index.js file.
 
+###### To run tests: 
+Run ```npm test ```
+
+Note: Units tests is been implemented on common components - StudentCard and CourseCard.
+
 
 ### Here is how i planned the planning doc/whimsical:
 
