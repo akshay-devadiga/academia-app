@@ -73,23 +73,18 @@ Note: Units tests is been implemented on common components - StudentCard and Cou
 [Planning Doc](https://whimsical.com/mainteny-task-9f64ySwEoporBFW9nMQEY3) 
 
 
-
-
-
-Thank you for providing me this opportunity. I really enjoyed working on it. :)
-
+Really enjoyed working on this project :)
 
 
 
 
-
-
-Tasks
 - [x] Finalize the stack,libraries to be used.
 - [x] Create a prototype in figma.
 - [x] Design /Research the architecture for the App.
 - [x] Build the server app.
+- [X] Add authentication for the APIs
 - [x] Build the client app.
+- [X] Make application responsive on mobile devices
 - [x] Implement tests for the app.
 - [X] Host the app in heroku/000webhost/netlify.
 - [ ] Learn about docker and create a docker container for the same.
