@@ -1,14 +1,21 @@
 # Academia 
 
-### App Demo: [Academia App](https://academia-app-proj.herokuapp.com/)
+### App Demo:
+Live At: [Academia App](https://academia-app-proj.herokuapp.com/)
 
+Gif Demo:
+
+![Academia](https://user-images.githubusercontent.com/39487594/149985803-2eb898ec-8059-4987-abc2-d0272e4890a6.gif)
+
+
+Video Demo: [Drive Link](https://drive.google.com/file/d/1b8n38xhRhb0Muiwkh9ZhgwH5Aa3RnifX/view?usp=sharing)
 
 ### What is this app about?
 Simple course management application built for an interview task.
 
 ### Tech Stack,Libraries & Tools used:
 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)  ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)  ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white) 
 [<img src="https://assets-global.website-files.com/6009f6f109d51e60b911ba53/606e2c19fbba751849f85f40_mockaroo-logo.png" alt="DeltaX" width="130"/>](https://matching.turing.com/developer-resume-preview/38733982a54ea61a863db2e63c38d28eb779daf65269)
 
 
@@ -42,6 +49,8 @@ Run ```npm install or yarn install ``` to install all of the packages
 Run ```nodemon app.js ```
 Note: Default port no is 3000. You can update the port in app.js if necessary.
 
+#### Postman Collection(json): 
+[PostmanCollection-Gdrive](https://drive.google.com/file/d/1oy0hwcm5Tocitkjph9F5gX8kCKpUepfW/view?usp=sharing)
 
 ### To setup Frontend:
 ###### Step I: 
@@ -81,7 +90,7 @@ Tasks
 - [x] Design /Research the architecture for the App.
 - [x] Build the server app.
 - [x] Build the client app.
-- [ ] Implement tests for the app.
-- [ ] Host the app in heroku/000webhost/netlify.
+- [x] Implement tests for the app.
+- [X] Host the app in heroku/000webhost/netlify.
 - [ ] Learn about docker and create a docker container for the same.
-- [ ] Update the documentation/readme file.
+- [X] Update the documentation/readme file.
