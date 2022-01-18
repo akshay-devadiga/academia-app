@@ -17,7 +17,7 @@ const CourseCard = ({ title, thumbnail, totalHours }) => {
     <Flex
       direction="column"
       p="3"
-      maxWidth="20vw"
+      maxW="sm"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
@@ -101,10 +101,4 @@ CourseCard.propTypes = {
   thumbnail: PropTypes.string
 }
 export default CourseCard;
-/*
- "Id": 1,
-        "Name": "Modern JavaScript From The Beginning",
-        "TotalHours": 42,
-        "Thumbnail": "https://github.com/coherencez/tech-logos/blob/master/jslogo.png"
 
-*/

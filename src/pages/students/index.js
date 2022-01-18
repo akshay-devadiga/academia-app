@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {Grid, Icon, Box,useToast } from "@chakra-ui/react";
-import {
-  BsChevronLeft,
-  BsChevronRight
-} from "react-icons/bs";
+import { Grid, Icon, Box, useToast, Stack } from "@chakra-ui/react";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import {
   Paginator,
   Container,
@@ -17,15 +14,13 @@ import StudentCard from "../../components/StudentCard";
 import { getStudents } from "../../service";
 const Students = () => {
   const navigate = useNavigate();
-  const toast = useToast()
+  const toast = useToast();
   const limit = 9;
-  const {
-    currentPage
-  } = usePaginator({
+  const { currentPage } = usePaginator({
     total: 20,
     initialState: {
       pageSize: limit,
-      currentPage: 1
+      currentPage: 1,
     },
   });
   var normalStyles = {
@@ -67,21 +62,21 @@ const Students = () => {
     window.open(mailLink);
   };
 
-  const goToStudentDetails = (selectedRollNo) =>{
-    console.log(selectedRollNo,"selectedRollNo");
+  const goToStudentDetails = (selectedRollNo) => {
+    console.log(selectedRollNo, "selectedRollNo");
     navigate(`/students/${selectedRollNo}`);
-  }
+  };
 
-  const copyPhoneNumberToClipboard = (primaryPhone) =>{
-    navigator.clipboard.writeText(primaryPhone)
+  const copyPhoneNumberToClipboard = (primaryPhone) => {
+    navigator.clipboard.writeText(primaryPhone);
     toast({
-        title: 'Copied.',
-        description: 'Copied primay phone number.',
-        status: 'info',
-        duration: 2000,
-        isClosable: true,
-      })
-  }
+      title: "Copied.",
+      description: "Copied primay phone number.",
+      status: "info",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
 
   useEffect(() => {
     let intialPage = 1;
@@ -89,20 +84,35 @@ const Students = () => {
   }, []);
 
   return (
-    <Box>
-      <Grid
-        color="primary.800"
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(3, 1fr)"
-        gap={3}
-        px={20}
-        mt={20}
-      >
-        {studentRecords.map((studentRecord) => {
-          return <StudentCard key={studentRecord.id} {...studentRecord} onWhatsAppClick={openWhatsapp} onMailClick={openMail} onPhoneClick={copyPhoneNumberToClipboard} onMoreDetailsClick={goToStudentDetails}/>;
-        })}
-      </Grid>
-      <Box maxWidth="27vw" display="inline-block" ml="3" align="right">
+    <Stack >
+      <Box>
+        <Grid
+          color="primary.800"
+          templateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(3, 1fr)",
+          ]}
+          gap={3}
+          px={[5, 20, 20, 20]}
+          mt={20}
+        >
+          {studentRecords.map((studentRecord) => {
+            return (
+              <StudentCard
+                key={studentRecord.rollNo}
+                {...studentRecord}
+                onWhatsAppClick={openWhatsapp}
+                onMailClick={openMail}
+                onPhoneClick={copyPhoneNumberToClipboard}
+                onMoreDetailsClick={goToStudentDetails}
+              />
+            );
+          })}
+        </Grid>
+      </Box>
+     <Box display="display-inline" justify="center" align="center">
         <Paginator
           currentPage={currentPage}
           pagesQuantity={pagesQuantity}
@@ -111,7 +121,7 @@ const Students = () => {
           normalStyles={normalStyles}
           onPageChange={fetchStudentRecords}
         >
-          <Container align="center" justify="space-between" w="full" p={4}>
+          <Container align="center" justify="center" p={4}>
             <Previous>
               <Icon as={BsChevronLeft} w={6} h={6} />
             </Previous>
@@ -121,8 +131,8 @@ const Students = () => {
             </Next>
           </Container>
         </Paginator>
-      </Box>
-    </Box>
+        </Box>
+    </Stack>
   );
 };
 export default Students;

@@ -27,7 +27,7 @@ const logoutUser = async () => {
         <Stack direction="row" mx="2" justify="space-between">
           <Image height="47px" ml="4" src={logo} />
           <Menu direction="rtl">
-            <MenuButton colorScheme="pink">
+            <MenuButton>
               <Avatar
                 size="md"
                 mr="2"

@@ -50,13 +50,10 @@ const Login = (props) => {
     let response = await loginUser(user);
     if (response && response.accessToken) {
       localStorage.setItem("accessToken", response.accessToken);
-      // Redirect to dashboard
       navigate('/students');
     } else {
       setShowAlert(true);
-      console.log("error");
       navigate('/');
-      // Redirect to login
     }
   };
   useEffect(() => {
