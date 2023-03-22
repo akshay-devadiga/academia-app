@@ -1,7 +1,7 @@
 # Academia 
 
 ### App Demo:
-Live At: [Academia App](https://academia-app-proj.herokuapp.com/)
+Live At: - TODO - Host app at render.com
 
 Gif Demo:
 
